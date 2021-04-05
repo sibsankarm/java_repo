@@ -1,0 +1,48 @@
+Last login: Fri Mar 26 06:09:10 EDT 2021 on pts/0
+$ . oraenv
+ORACLE_SID = [svc_banner] ? PROD
+The Oracle base has been set to /u01/app/oracle
+$ cd /u01/tags/
+$ svn up
+Updating '.':
+U    Security/usr_developer_read_role_table_access_grants.sql
+U    Security/usr_developer_role_table_access_grants.sql
+U    Security/usr_pagebuilder_role.sql
+Updated to revision 13703.
+$ cd /u01/tags/AR_Hold_Popsel/views
+$ ls -ltr
+total 8
+-rw-r--r--. 1 svc_banner banner 3187 Mar 17 09:08 cr_tzvbalt.sql
+-rw-r--r--. 1 svc_banner banner 2996 Mar 17 09:08 cr_tzvbalt2.sql
+$ sqlplus baninst1/******
+
+SQL*Plus: Release 11.2.0.3.0 Production on Fri Mar 26 06:20:50 2021
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+
+
+SQL> select name from v$database;
+
+NAME
+---------
+PROD
+
+SQL> show user
+USER is "BANINST1"
+SQL> @cr_tzvbalt.sql
+
+Comment created.
+
+
+View created.
+
+SQL> @cr_tzvbalt2.sql
+
+View created.
+
+SQL> show error
+No errors.
